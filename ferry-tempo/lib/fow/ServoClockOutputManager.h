@@ -30,24 +30,23 @@
 
 class ServoClockOutputManager : public OutputManagerInterface {
   public:
-    ServoClockOutputManager(int servMaxPosition, int servMinPosition, int redIntensity, int greenIntensity);
+    ServoClockOutputManager(const int servMaxPosition, const int servMinPosition, const int redIntensity, const int greenIntensity, const std::tuple<bool, bool> servosReversed);
 
     void update(std::function<DataManager::FerryData (int)> dataSupplier);
     void calibrate();
   private:
     const int servoMaxPosition;
     const int servoMinPosition;
-    const int dockLightIntensity = 255;
-    const int departingDockLightPin = 2;
-    const int arrivingDockLightPin = 15;
-
-    const unsigned long dockZeroingTime = 500;      // Milliseconds
-    unsigned long dockStartTime = 0;
-    const unsigned long calibrationHoldTime = 2000; // Milliseconds
+    const std::tuple<bool, bool> servosReversed;
+    static constexpr int dockLightIntensity = 255;
+    static constexpr int departingDockLightPin = 2;
+    static constexpr int arrivingDockLightPin = 15;
+    static constexpr double calibrationHoldTime = 2000; // Milliseconds
+    
     unsigned long calibrationStartTime = 0;
 
     void updateLightMode(LightHelper::Modes mode);
-    void updateOutput(const DataManager::FerryData &data, PercentageServo &servo, LightHelper &lights, int &departingDockLightVal, int &arrivingDockLightVal);
+    void updateOutput(const DataManager::FerryData &data, PercentageServo &servo, LightHelper &lights, int &departingDockLightVal, int &arrivingDockLightVal, const bool servoReversed);
 
     PercentageServo primaryServo = PercentageServo(servoMinPosition, servoMaxPosition, false);
     PercentageServo secondaryServo = PercentageServo(servoMinPosition, servoMaxPosition, false);
