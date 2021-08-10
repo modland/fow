@@ -73,6 +73,8 @@ If none of the above options work then you can try connecting without a timeout:
 If you can't connect with the above procedure, then try connecting to a different WiFi network.
 
 If you don't have a different WiFi network that you can use, then [create a new issue](https://github.com/pietroglyph/fow/issues/new) with a description of your problem.
+### deploy.sh File or Directory Not Found 
+If you enter the deply.sh command and encounter a message that the file or dirrectory is not found, then make sure that your terminal is set to the right dirrectory. Use Unix commands to determine this. 'pwd' will display your current path. 'ls' will list the files in your current dirrectory. 'cd' will change the directory. for example 'cd ..' will go up a folder. 'cd' then tab will show the folders you can change to. Once you are in the folder 'ferry-tempo' then the command will work.
 ### Other Issues/Reading Serial Output
 If you open a GitHub issue, the first thing you will probably be asked to do is capture the device's serial output. If you are a more technically inclined user you might want to try this *before* posting an issue, as the output may provide some helpful troubleshooting tips (regardless of the type of issue). If that sounds like your situation, or if you're just curious about what your FERRY TEMPO is doing, then this is the section for you!
 
